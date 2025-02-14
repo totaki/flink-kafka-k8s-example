@@ -1,0 +1,5 @@
+yamlApplicationConfig:
+   kafka:
+     clusters:
+       - name: strimzi
+         bootstrapServers: my-rnd-1-kafka-bootstrap:9092

@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: generator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      generator: my-rnd-generator
+  template:
+    metadata:
+      name: flink-demo-generator
+      labels:
+        generator: my-rnd-generator
+    spec:
+      containers:
+        - name: flink-demo-generator
+          image: mesosphere/flink-generator:0.1
+          command: ["/generator-linux"]
+          imagePullPolicy: Always
+          args: ["--broker", "my-rnd-1-kafka-bootstrap:9092"]
